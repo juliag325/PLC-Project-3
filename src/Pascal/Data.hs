@@ -44,7 +44,16 @@ data Statement =
     -- Block
     | Block [Statement]
 
+data VType =  REAL | BOOL | STRING; 
+
+data Definition = 
+    -- Variable definition, list of var, type  CHECK THIS 
+    VarDef [String] VType
+    -- Procedures
+    | Proc String [(String, VType)] Statement 
+
 -- Data-structure for hole program
 -- TODO: add declarations and other useful stuff
 -- Hint: make a tuple containing the other ingredients
+--main program is list of definitions: use a tuple (check book)
 type Program = [Statement]

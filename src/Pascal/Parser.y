@@ -42,6 +42,22 @@ import Pascal.Lexer
 Program :: {Program}
     : 'begin' Statements 'end' { $2 }
 
+Defs :: {[Definitions]} 
+    : { [] } -- nothing; make empty list 
+    | Definition Defs {$1$2 } -- put statement as Definition
+
+Definition :: {Definition}
+    : 'var' ID_list ':' Type  {VarDef $2 $4 }
+
+Type :: {VType} --ADD TO TOKEN LIST
+    : 'bool' { BOOL }
+    | 'real' { REAL }
+    | 'string' { STRING }
+
+ID_list :: {[String]}
+    : ID  {[$1]}"
+    | ID ',' ID_list { $1:$3 }
+
 -- Expressions
 Exp :: {Exp}
     : '+' Exp { $2 } -- ignore Plus
