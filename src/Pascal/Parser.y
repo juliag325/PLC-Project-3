@@ -13,7 +13,7 @@ import Pascal.Lexer
 %monad { Parser } { thenP } { returnP }
 %lexer { lexer } { Token _ TokenEOF }
 
-%token
+%token 
         int             { Token _ (TokenInt $$) }
         ID              { Token _ (TokenID $$)  }
         '+'             { Token _ (TokenOp "+")   }
@@ -25,11 +25,17 @@ import Pascal.Lexer
         ')'             { Token _ (TokenK  ")")   }
         'begin'         { Token _ (TokenK "begin") }
         'end'           { Token _ (TokenK "end")  }
-        ':='            { Token _ (TokenK ":=")   }
+        ':='            { Token _ (TokenOp ":=")   }
         'true'          { Token _ (TokenK "true") }
         'false'         { Token _ (TokenK "false") }
         'and'           { Token _ (TokenK "and") }
         'not'           { Token _ (TokenK "not") }
+	    ','            { Token _ (TokenK ",")   }
+        ':'          { Token _ (TokenOp ":") }
+        'boolean'         { Token _ (TokenK "boolean") }
+        'real'           { Token _ (TokenK "real") }
+        'string'           { Token _ (TokenK "string") }
+        'var'           { Token _ (TokenK "var") }
 
 -- associativity of operators in reverse precedence order
 %nonassoc '>' '>=' '<' '<=' '==' '!='
@@ -42,20 +48,21 @@ import Pascal.Lexer
 Program :: {Program}
     : 'begin' Statements 'end' { $2 }
 
-Defs :: {[Definitions]} 
+-- Variable definitions
+Defs :: {[Definition]} 
     : { [] } -- nothing; make empty list 
-    | Definition Defs {$1$2 } -- put statement as Definition
+    | Definition Defs {$1:$2 } -- put statement as Definition
 
 Definition :: {Definition}
     : 'var' ID_list ':' Type  {VarDef $2 $4 }
 
 Type :: {VType} --ADD TO TOKEN LIST
-    : 'bool' { BOOL }
+    : 'boolean' { BOOL }
     | 'real' { REAL }
     | 'string' { STRING }
 
 ID_list :: {[String]}
-    : ID  {[$1]}"
+    : ID  {[$1]}
     | ID ',' ID_list { $1:$3 }
 
 -- Expressions

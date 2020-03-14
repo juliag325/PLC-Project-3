@@ -29,34 +29,62 @@ happyIn4 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap4 x)
 happyOut4 :: (HappyAbsSyn ) -> HappyWrap4
 happyOut4 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut4 #-}
-newtype HappyWrap5 = HappyWrap5 (Exp)
-happyIn5 :: (Exp) -> (HappyAbsSyn )
+newtype HappyWrap5 = HappyWrap5 ([Definition])
+happyIn5 :: ([Definition]) -> (HappyAbsSyn )
 happyIn5 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap5 x)
 {-# INLINE happyIn5 #-}
 happyOut5 :: (HappyAbsSyn ) -> HappyWrap5
 happyOut5 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut5 #-}
-newtype HappyWrap6 = HappyWrap6 (BoolExp)
-happyIn6 :: (BoolExp) -> (HappyAbsSyn )
+newtype HappyWrap6 = HappyWrap6 (Definition)
+happyIn6 :: (Definition) -> (HappyAbsSyn )
 happyIn6 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap6 x)
 {-# INLINE happyIn6 #-}
 happyOut6 :: (HappyAbsSyn ) -> HappyWrap6
 happyOut6 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut6 #-}
-newtype HappyWrap7 = HappyWrap7 ([Statement])
-happyIn7 :: ([Statement]) -> (HappyAbsSyn )
+newtype HappyWrap7 = HappyWrap7 (VType)
+happyIn7 :: (VType) -> (HappyAbsSyn )
 happyIn7 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap7 x)
 {-# INLINE happyIn7 #-}
 happyOut7 :: (HappyAbsSyn ) -> HappyWrap7
 happyOut7 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut7 #-}
-newtype HappyWrap8 = HappyWrap8 (Statement)
-happyIn8 :: (Statement) -> (HappyAbsSyn )
+newtype HappyWrap8 = HappyWrap8 ([String])
+happyIn8 :: ([String]) -> (HappyAbsSyn )
 happyIn8 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap8 x)
 {-# INLINE happyIn8 #-}
 happyOut8 :: (HappyAbsSyn ) -> HappyWrap8
 happyOut8 x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyOut8 #-}
+newtype HappyWrap9 = HappyWrap9 (Exp)
+happyIn9 :: (Exp) -> (HappyAbsSyn )
+happyIn9 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap9 x)
+{-# INLINE happyIn9 #-}
+happyOut9 :: (HappyAbsSyn ) -> HappyWrap9
+happyOut9 x = Happy_GHC_Exts.unsafeCoerce# x
+{-# INLINE happyOut9 #-}
+newtype HappyWrap10 = HappyWrap10 (BoolExp)
+happyIn10 :: (BoolExp) -> (HappyAbsSyn )
+happyIn10 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap10 x)
+{-# INLINE happyIn10 #-}
+happyOut10 :: (HappyAbsSyn ) -> HappyWrap10
+happyOut10 x = Happy_GHC_Exts.unsafeCoerce# x
+{-# INLINE happyOut10 #-}
+newtype HappyWrap11 = HappyWrap11 ([Statement])
+happyIn11 :: ([Statement]) -> (HappyAbsSyn )
+happyIn11 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap11 x)
+{-# INLINE happyIn11 #-}
+happyOut11 :: (HappyAbsSyn ) -> HappyWrap11
+happyOut11 x = Happy_GHC_Exts.unsafeCoerce# x
+{-# INLINE happyOut11 #-}
+newtype HappyWrap12 = HappyWrap12 (Statement)
+happyIn12 :: (Statement) -> (HappyAbsSyn )
+happyIn12 x = Happy_GHC_Exts.unsafeCoerce# (HappyWrap12 x)
+{-# INLINE happyIn12 #-}
+happyOut12 :: (HappyAbsSyn ) -> HappyWrap12
+happyOut12 x = Happy_GHC_Exts.unsafeCoerce# x
+{-# INLINE happyOut12 #-}
 happyInTok :: (Token) -> (HappyAbsSyn )
 happyInTok x = Happy_GHC_Exts.unsafeCoerce# x
 {-# INLINE happyInTok #-}
@@ -66,40 +94,40 @@ happyOutTok x = Happy_GHC_Exts.unsafeCoerce# x
 
 
 happyExpList :: HappyAddr
-happyExpList = HappyA# "\x00\x00\x02\x00\x00\x04\x00\x08\x00\x00\x00\x00\x00\x00\x40\x00\x40\x00\x00\x00\x00\x02\x00\x46\x00\x00\x00\x00\x00\x00\x00\x00\x50\x00\x00\x60\x04\x00\xc0\x08\x00\x80\x11\x00\x00\x45\x00\x00\x08\x00\x00\x10\x00\x00\x18\x01\x00\x30\x02\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00"#
+happyExpList = HappyA# "\x00\x00\x20\x00\x00\x00\x00\x01\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x10\x00\x00\x00\x00\x00\x02\x00\x00\x18\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x50\x00\x00\x00\x80\x11\x00\x00\x00\x8c\x00\x00\x00\x60\x04\x00\x00\x00\x45\x00\x00\x00\x20\x00\x00\x00\x00\x01\x00\x00\x00\x46\x00\x00\x00\x30\x02\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"#
 
 {-# NOINLINE happyExpListPerState #-}
 happyExpListPerState st =
     token_strs_expected
-  where token_strs = ["error","%dummy","%start_happyParser","Program","Exp","BoolExp","Statements","Statement","int","ID","'+'","'-'","'*'","'/'","'='","'('","')'","'begin'","'end'","':='","'true'","'false'","'and'","'not'","%eof"]
-        bit_start = st * 25
-        bit_end = (st + 1) * 25
+  where token_strs = ["error","%dummy","%start_happyParser","Program","Defs","Definition","Type","ID_list","Exp","BoolExp","Statements","Statement","int","ID","'+'","'-'","'*'","'/'","'='","'('","')'","'begin'","'end'","':='","'true'","'false'","'and'","'not'","','","':'","'boolean'","'real'","'string'","'var'","%eof"]
+        bit_start = st * 35
+        bit_end = (st + 1) * 35
         read_bit = readArrayBit happyExpList
         bits = map read_bit [bit_start..bit_end - 1]
-        bits_indexed = zip bits [0..24]
+        bits_indexed = zip bits [0..34]
         token_strs_expected = concatMap f bits_indexed
         f (False, _) = []
         f (True, nr) = [token_strs !! nr]
 
 happyActOffsets :: HappyAddr
-happyActOffsets = HappyA# "\xf8\xff\xf8\xff\x0c\x00\xff\xff\x04\x00\x0f\x00\x06\x00\x01\x00\x00\x00\x00\x00\x03\x00\x01\x00\x01\x00\x01\x00\xfe\xff\x0e\x00\x0e\x00\x01\x00\x01\x00\x00\x00\x0e\x00\x00\x00\x00\x00"#
+happyActOffsets = HappyA# "\xf8\xff\xf8\xff\x08\x00\xf9\xff\x07\x00\x0d\x00\x05\x00\x01\x00\x00\x00\x00\x00\x03\x00\x01\x00\x01\x00\x01\x00\xfe\xff\x0e\x00\x0e\x00\x01\x00\x01\x00\x00\x00\x0e\x00\x00\x00\x00\x00"#
 
 happyGotoOffsets :: HappyAddr
-happyGotoOffsets = HappyA# "\x14\x00\x00\x00\x07\x00\x00\x00\x00\x00\x09\x00\x00\x00\x15\x00\x00\x00\x00\x00\x00\x00\x16\x00\x17\x00\x18\x00\x00\x00\x00\x00\x00\x00\x19\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x00\x00"#
+happyGotoOffsets = HappyA# "\x14\x00\x00\x00\x04\x00\x00\x00\x00\x00\x06\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x11\x00\x12\x00\x13\x00\x00\x00\x00\x00\x00\x00\x15\x00\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00"#
 
 happyAdjustOffset :: Happy_GHC_Exts.Int# -> Happy_GHC_Exts.Int#
 happyAdjustOffset off = off
 
 happyDefActions :: HappyAddr
-happyDefActions = HappyA# "\x00\x00\x00\x00\xf4\xff\x00\x00\x00\x00\xf4\xff\x00\x00\x00\x00\xf3\xff\xfe\xff\xf2\xff\x00\x00\x00\x00\x00\x00\x00\x00\xfc\xff\xfd\xff\x00\x00\x00\x00\xfa\xff\xfb\xff\xf9\xff"#
+happyDefActions = HappyA# "\x00\x00\x00\x00\xec\xff\x00\x00\x00\x00\xec\xff\x00\x00\x00\x00\xeb\xff\xfe\xff\xea\xff\x00\x00\x00\x00\x00\x00\x00\x00\xf4\xff\xf5\xff\x00\x00\x00\x00\xf2\xff\xf3\xff\xf1\xff"#
 
 happyCheck :: HappyAddr
-happyCheck = HappyA# "\xff\xff\x03\x00\x0a\x00\x05\x00\x03\x00\x04\x00\x03\x00\x09\x00\x05\x00\x08\x00\x03\x00\x04\x00\x03\x00\x04\x00\x02\x00\x0b\x00\x11\x00\x02\x00\x0c\x00\x05\x00\x00\x00\xff\xff\x01\x00\x01\x00\x01\x00\x01\x00\x01\x00\x01\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"#
+happyCheck = HappyA# "\xff\xff\x03\x00\x0a\x00\x05\x00\x03\x00\x04\x00\x03\x00\x09\x00\x05\x00\x08\x00\x02\x00\x07\x00\x08\x00\x07\x00\x08\x00\x02\x00\x17\x00\x0c\x00\x0b\x00\x05\x00\x00\x00\x05\x00\x05\x00\x05\x00\x05\x00\xff\xff\x05\x00\x05\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"#
 
 happyTable :: HappyAddr
-happyTable = HappyA# "\x00\x00\x12\x00\x03\x00\x13\x00\x0c\x00\x0d\x00\x12\x00\x16\x00\x13\x00\x0e\x00\x04\x00\x05\x00\x08\x00\x05\x00\x07\x00\x0a\x00\xff\xff\x07\x00\x08\x00\x13\x00\x03\x00\x00\x00\x0a\x00\x10\x00\x0f\x00\x0e\x00\x14\x00\x13\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"#
+happyTable = HappyA# "\x00\x00\x12\x00\x03\x00\x13\x00\x0c\x00\x0d\x00\x12\x00\x16\x00\x13\x00\x0e\x00\x07\x00\x04\x00\x05\x00\x08\x00\x05\x00\x07\x00\xff\xff\x08\x00\x0a\x00\x13\x00\x03\x00\x0a\x00\x10\x00\x0f\x00\x0e\x00\x00\x00\x14\x00\x13\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"#
 
-happyReduceArr = Happy_Data_Array.array (1, 13) [
+happyReduceArr = Happy_Data_Array.array (1, 21) [
 	(1 , happyReduce_1),
 	(2 , happyReduce_2),
 	(3 , happyReduce_3),
@@ -112,130 +140,207 @@ happyReduceArr = Happy_Data_Array.array (1, 13) [
 	(10 , happyReduce_10),
 	(11 , happyReduce_11),
 	(12 , happyReduce_12),
-	(13 , happyReduce_13)
+	(13 , happyReduce_13),
+	(14 , happyReduce_14),
+	(15 , happyReduce_15),
+	(16 , happyReduce_16),
+	(17 , happyReduce_17),
+	(18 , happyReduce_18),
+	(19 , happyReduce_19),
+	(20 , happyReduce_20),
+	(21 , happyReduce_21)
 	]
 
-happy_n_terms = 18 :: Int
-happy_n_nonterms = 5 :: Int
+happy_n_terms = 24 :: Int
+happy_n_nonterms = 9 :: Int
 
 happyReduce_1 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
 happyReduce_1 = happySpecReduce_3  0# happyReduction_1
 happyReduction_1 happy_x_3
 	happy_x_2
 	happy_x_1
-	 =  case happyOut7 happy_x_2 of { (HappyWrap7 happy_var_2) -> 
+	 =  case happyOut11 happy_x_2 of { (HappyWrap11 happy_var_2) -> 
 	happyIn4
 		 (happy_var_2
 	)}
 
 happyReduce_2 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_2 = happySpecReduce_2  1# happyReduction_2
-happyReduction_2 happy_x_2
-	happy_x_1
-	 =  case happyOut5 happy_x_2 of { (HappyWrap5 happy_var_2) -> 
-	happyIn5
-		 (happy_var_2
-	)}
+happyReduce_2 = happySpecReduce_0  1# happyReduction_2
+happyReduction_2  =  happyIn5
+		 ([]
+	)
 
 happyReduce_3 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
 happyReduce_3 = happySpecReduce_2  1# happyReduction_3
 happyReduction_3 happy_x_2
 	happy_x_1
-	 =  case happyOut5 happy_x_2 of { (HappyWrap5 happy_var_2) -> 
-	happyIn5
-		 (Op1 "-" happy_var_2
-	)}
-
-happyReduce_4 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_4 = happySpecReduce_3  1# happyReduction_4
-happyReduction_4 happy_x_3
-	happy_x_2
-	happy_x_1
-	 =  case happyOut5 happy_x_1 of { (HappyWrap5 happy_var_1) -> 
-	case happyOut5 happy_x_3 of { (HappyWrap5 happy_var_3) -> 
-	happyIn5
-		 (Op2 "+" happy_var_1 happy_var_3
-	)}}
-
-happyReduce_5 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_5 = happySpecReduce_3  1# happyReduction_5
-happyReduction_5 happy_x_3
-	happy_x_2
-	happy_x_1
-	 =  case happyOut5 happy_x_1 of { (HappyWrap5 happy_var_1) -> 
-	case happyOut5 happy_x_3 of { (HappyWrap5 happy_var_3) -> 
-	happyIn5
-		 (Op2 "*" happy_var_1 happy_var_3
-	)}}
-
-happyReduce_6 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_6 = happySpecReduce_3  1# happyReduction_6
-happyReduction_6 happy_x_3
-	happy_x_2
-	happy_x_1
-	 =  case happyOut5 happy_x_2 of { (HappyWrap5 happy_var_2) -> 
-	happyIn5
-		 (happy_var_2
-	)}
-
-happyReduce_7 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_7 = happySpecReduce_1  2# happyReduction_7
-happyReduction_7 happy_x_1
-	 =  happyIn6
-		 (True_C
-	)
-
-happyReduce_8 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_8 = happySpecReduce_1  2# happyReduction_8
-happyReduction_8 happy_x_1
-	 =  happyIn6
-		 (False_C
-	)
-
-happyReduce_9 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_9 = happySpecReduce_2  2# happyReduction_9
-happyReduction_9 happy_x_2
-	happy_x_1
-	 =  case happyOut6 happy_x_2 of { (HappyWrap6 happy_var_2) -> 
-	happyIn6
-		 (Not happy_var_2
-	)}
-
-happyReduce_10 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_10 = happySpecReduce_3  2# happyReduction_10
-happyReduction_10 happy_x_3
-	happy_x_2
-	happy_x_1
 	 =  case happyOut6 happy_x_1 of { (HappyWrap6 happy_var_1) -> 
-	case happyOut6 happy_x_3 of { (HappyWrap6 happy_var_3) -> 
-	happyIn6
-		 (OpB "and" happy_var_1 happy_var_3
-	)}}
-
-happyReduce_11 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_11 = happySpecReduce_0  3# happyReduction_11
-happyReduction_11  =  happyIn7
-		 ([]
-	)
-
-happyReduce_12 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_12 = happySpecReduce_2  3# happyReduction_12
-happyReduction_12 happy_x_2
-	happy_x_1
-	 =  case happyOut8 happy_x_1 of { (HappyWrap8 happy_var_1) -> 
-	case happyOut7 happy_x_2 of { (HappyWrap7 happy_var_2) -> 
-	happyIn7
+	case happyOut5 happy_x_2 of { (HappyWrap5 happy_var_2) -> 
+	happyIn5
 		 (happy_var_1:happy_var_2
 	)}}
 
-happyReduce_13 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
-happyReduce_13 = happySpecReduce_3  4# happyReduction_13
-happyReduction_13 happy_x_3
+happyReduce_4 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_4 = happyReduce 4# 2# happyReduction_4
+happyReduction_4 (happy_x_4 `HappyStk`
+	happy_x_3 `HappyStk`
+	happy_x_2 `HappyStk`
+	happy_x_1 `HappyStk`
+	happyRest)
+	 = case happyOut8 happy_x_2 of { (HappyWrap8 happy_var_2) -> 
+	case happyOut7 happy_x_4 of { (HappyWrap7 happy_var_4) -> 
+	happyIn6
+		 (VarDef happy_var_2 happy_var_4
+	) `HappyStk` happyRest}}
+
+happyReduce_5 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_5 = happySpecReduce_1  3# happyReduction_5
+happyReduction_5 happy_x_1
+	 =  happyIn7
+		 (BOOL
+	)
+
+happyReduce_6 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_6 = happySpecReduce_1  3# happyReduction_6
+happyReduction_6 happy_x_1
+	 =  happyIn7
+		 (REAL
+	)
+
+happyReduce_7 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_7 = happySpecReduce_1  3# happyReduction_7
+happyReduction_7 happy_x_1
+	 =  happyIn7
+		 (STRING
+	)
+
+happyReduce_8 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_8 = happySpecReduce_1  4# happyReduction_8
+happyReduction_8 happy_x_1
+	 =  case happyOutTok happy_x_1 of { (Token _ (TokenID happy_var_1)) -> 
+	happyIn8
+		 ([happy_var_1]
+	)}
+
+happyReduce_9 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_9 = happySpecReduce_3  4# happyReduction_9
+happyReduction_9 happy_x_3
 	happy_x_2
 	happy_x_1
 	 =  case happyOutTok happy_x_1 of { (Token _ (TokenID happy_var_1)) -> 
-	case happyOut5 happy_x_3 of { (HappyWrap5 happy_var_3) -> 
+	case happyOut8 happy_x_3 of { (HappyWrap8 happy_var_3) -> 
 	happyIn8
+		 (happy_var_1:happy_var_3
+	)}}
+
+happyReduce_10 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_10 = happySpecReduce_2  5# happyReduction_10
+happyReduction_10 happy_x_2
+	happy_x_1
+	 =  case happyOut9 happy_x_2 of { (HappyWrap9 happy_var_2) -> 
+	happyIn9
+		 (happy_var_2
+	)}
+
+happyReduce_11 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_11 = happySpecReduce_2  5# happyReduction_11
+happyReduction_11 happy_x_2
+	happy_x_1
+	 =  case happyOut9 happy_x_2 of { (HappyWrap9 happy_var_2) -> 
+	happyIn9
+		 (Op1 "-" happy_var_2
+	)}
+
+happyReduce_12 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_12 = happySpecReduce_3  5# happyReduction_12
+happyReduction_12 happy_x_3
+	happy_x_2
+	happy_x_1
+	 =  case happyOut9 happy_x_1 of { (HappyWrap9 happy_var_1) -> 
+	case happyOut9 happy_x_3 of { (HappyWrap9 happy_var_3) -> 
+	happyIn9
+		 (Op2 "+" happy_var_1 happy_var_3
+	)}}
+
+happyReduce_13 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_13 = happySpecReduce_3  5# happyReduction_13
+happyReduction_13 happy_x_3
+	happy_x_2
+	happy_x_1
+	 =  case happyOut9 happy_x_1 of { (HappyWrap9 happy_var_1) -> 
+	case happyOut9 happy_x_3 of { (HappyWrap9 happy_var_3) -> 
+	happyIn9
+		 (Op2 "*" happy_var_1 happy_var_3
+	)}}
+
+happyReduce_14 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_14 = happySpecReduce_3  5# happyReduction_14
+happyReduction_14 happy_x_3
+	happy_x_2
+	happy_x_1
+	 =  case happyOut9 happy_x_2 of { (HappyWrap9 happy_var_2) -> 
+	happyIn9
+		 (happy_var_2
+	)}
+
+happyReduce_15 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_15 = happySpecReduce_1  6# happyReduction_15
+happyReduction_15 happy_x_1
+	 =  happyIn10
+		 (True_C
+	)
+
+happyReduce_16 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_16 = happySpecReduce_1  6# happyReduction_16
+happyReduction_16 happy_x_1
+	 =  happyIn10
+		 (False_C
+	)
+
+happyReduce_17 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_17 = happySpecReduce_2  6# happyReduction_17
+happyReduction_17 happy_x_2
+	happy_x_1
+	 =  case happyOut10 happy_x_2 of { (HappyWrap10 happy_var_2) -> 
+	happyIn10
+		 (Not happy_var_2
+	)}
+
+happyReduce_18 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_18 = happySpecReduce_3  6# happyReduction_18
+happyReduction_18 happy_x_3
+	happy_x_2
+	happy_x_1
+	 =  case happyOut10 happy_x_1 of { (HappyWrap10 happy_var_1) -> 
+	case happyOut10 happy_x_3 of { (HappyWrap10 happy_var_3) -> 
+	happyIn10
+		 (OpB "and" happy_var_1 happy_var_3
+	)}}
+
+happyReduce_19 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_19 = happySpecReduce_0  7# happyReduction_19
+happyReduction_19  =  happyIn11
+		 ([]
+	)
+
+happyReduce_20 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_20 = happySpecReduce_2  7# happyReduction_20
+happyReduction_20 happy_x_2
+	happy_x_1
+	 =  case happyOut12 happy_x_1 of { (HappyWrap12 happy_var_1) -> 
+	case happyOut11 happy_x_2 of { (HappyWrap11 happy_var_2) -> 
+	happyIn11
+		 (happy_var_1:happy_var_2
+	)}}
+
+happyReduce_21 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )
+happyReduce_21 = happySpecReduce_3  8# happyReduction_21
+happyReduction_21 happy_x_3
+	happy_x_2
+	happy_x_1
+	 =  case happyOutTok happy_x_1 of { (Token _ (TokenID happy_var_1)) -> 
+	case happyOut9 happy_x_3 of { (HappyWrap9 happy_var_3) -> 
+	happyIn12
 		 (Assign happy_var_1 happy_var_3
 	)}}
 
@@ -243,7 +348,7 @@ happyNewToken action sts stk
 	= lexer(\tk -> 
 	let cont i = happyDoAction i tk action sts stk in
 	case tk of {
-	Token _ TokenEOF -> happyDoAction 17# tk action sts stk;
+	Token _ TokenEOF -> happyDoAction 23# tk action sts stk;
 	Token _ (TokenInt happy_dollar_dollar) -> cont 1#;
 	Token _ (TokenID happy_dollar_dollar) -> cont 2#;
 	Token _ (TokenOp "+") -> cont 3#;
@@ -255,15 +360,21 @@ happyNewToken action sts stk
 	Token _ (TokenK  ")") -> cont 9#;
 	Token _ (TokenK "begin") -> cont 10#;
 	Token _ (TokenK "end") -> cont 11#;
-	Token _ (TokenK ":=") -> cont 12#;
+	Token _ (TokenOp ":=") -> cont 12#;
 	Token _ (TokenK "true") -> cont 13#;
 	Token _ (TokenK "false") -> cont 14#;
 	Token _ (TokenK "and") -> cont 15#;
 	Token _ (TokenK "not") -> cont 16#;
+	Token _ (TokenK ",") -> cont 17#;
+	Token _ (TokenOp ":") -> cont 18#;
+	Token _ (TokenK "boolean") -> cont 19#;
+	Token _ (TokenK "real") -> cont 20#;
+	Token _ (TokenK "string") -> cont 21#;
+	Token _ (TokenK "var") -> cont 22#;
 	_ -> happyError' (tk, [])
 	})
 
-happyError_ explist 17# tk = happyError' (tk, explist)
+happyError_ explist 23# tk = happyError' (tk, explist)
 happyError_ explist _ tk = happyError' (tk, explist)
 
 happyThen :: () => Parser a -> (a -> Parser b) -> Parser b

@@ -6,6 +6,8 @@ module Pascal.Data
         Exp(..),
         BoolExp(..),
         Statement(..),
+        VType(..),
+        Definition(..),
         Program
     ) where
 
@@ -51,6 +53,7 @@ data Definition =
     VarDef [String] VType
     -- Procedures
     | Proc String [(String, VType)] Statement 
+
 
 -- Data-structure for hole program
 -- TODO: add declarations and other useful stuff
