@@ -37,16 +37,16 @@ $alpha = [a-zA-Z]               -- alphabetic characters
 -- TODO: Map symbols into token types (with or without parameters)
 tokens :-
   $white+                               ; -- remove multiple white-spaces
-  "//".*                                ; -- skip one line comments
-  "(*".* "*)"                           ; -- skip multi line comments
   [ \t\r\n]+                            ;
+  "//".*                                ; -- skip one line comments
+  "(*"(.* | [\n])* "*)"                 ; -- skip multi line comments
   $digit+                               { tok_read     TokenInt }
   $digit+ '.'? $digit*                  { tok_read     TokenReal }
   true|false                            { tok_read     TokenBool }
-  "'" .* "'"                         { tok_read     TokenString }
-  [\+]|[\-]|[\*]|[\/]|[=]|[\<]|[\>]|[\<=]|[\>=]|[\<\>]               { tok_read     TokenOp }
-  [\(]|[\)]|[\,]|[\;]|begin|[end.]|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|true|false        { tok_read     TokenK }
-  [:=]|[\:]                             { tok_read     TokenOp }
+  "'" .* "'"                         { tok_string     TokenString }
+  [\+]|[\-]|[\*]|[\/]|[=]|[\<]|[\>]|[\<=]|[\>=]|[\<\>]               { tok_string     TokenOp }
+  [\(]|[\)]|[\,]|[\;]|begin|"end."|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|true|false        { tok_string     TokenK }
+  [:=]|[\:]                             { tok_string     TokenOp }
   $alpha [$alpha $digit \_ \']*         { tok_string   TokenID }
 
 {
