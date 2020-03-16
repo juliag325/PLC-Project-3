@@ -1,23 +1,23 @@
 program test14; 
 
-var 
-days: real; 
-endGame: boolean = true; 
-playing: boolean = true;
-score: real; 
-specialScore: real; 
-playerOne: real = 0; 
-playerTwo: real = 0; 
-input: real; 
+//var 
+//days: real; 
+//endGame: boolean = true; 
+//playing: boolean = true;
+// score: real; 
+// specialScore: real; 
+// playerOne: real = 0; 
+// playerTwo: real = 0; 
+// input: real; 
 
 begin
 if (endGame) then 
     begin
         if(playing)then 
-        playerOne := playerOne + 1
+        playerOne := playerOne + 1;
         else writeln('playerOne');
         playerTwo := playerTwo + 30; 
-    end
+    end;
 else 
     writeln('No game exists.'); 
     
@@ -29,7 +29,7 @@ writeln(score);
 writeln('This is the special score: '); 
 writeln(specialScore);
 
-readln(input); 
+//readln(input); 
 writeln(input); 
 
 end. 

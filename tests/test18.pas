@@ -1,9 +1,9 @@
 program test18; 
 
-var
-   x, y: boolean;
-   z: real = 6;
-   i: real;
+// var
+//    x, y: boolean;
+//    z: real = 6;
+//    i: real;
 
 begin
    x := true;
@@ -21,9 +21,12 @@ begin
            x:= false;
            continue;
         end;
-        z := z + 2;
+        else
+          z := z + 2;
         writeln(i);
         if (not y) then 
+          y := true;
+        else 
           y := true;
       end;
    

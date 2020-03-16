@@ -24,6 +24,7 @@ data Exp =
     | FunCall String [Exp]
     -- real value: e.g. Real 1.0
     | Real Float
+    | IntR Int
     -- variable: e.g. Var "x"
     | Var String
 
@@ -35,9 +36,12 @@ data BoolExp =
     | Not BoolExp
     -- comparison operator: Comp name expression expression
     | Comp String Exp Exp
+    
     -- true and false constants
-    | True_C
-    | False_C
+    -- | True_C
+    -- | False_C
+    | Boolean Bool
+    | VarB String
 
 data Line = 
     String

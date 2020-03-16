@@ -1,7 +1,7 @@
 program test16; 
 
-var
-   x, y: boolean;
+// var
+//    x, y: boolean;
 
 begin
    x := true;
@@ -15,7 +15,8 @@ begin
             true: writeln('This  is part of inner statement' );
             false: writeln('y is false'); 
             end;
-         end; 
+         end;
+      false:  writeln('This  is part of outer statement');
       end;
    
   writeln('Testing nested case statements'); 

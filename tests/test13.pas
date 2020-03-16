@@ -1,16 +1,16 @@
 program test13; 
 
-var 
-i: real = 4; 
-j: real = 8;
-operation: real;  
-k: real;  
-works: boolean = false;
-something: boolean = false;  
-special: real; 
+//var 
+//i: real = 4; 
+//j: real = 8;
+//operation: real;  
+//k: real;  
+//works: boolean = false;
+//something: boolean = false;  
+//special: real; 
 
 begin 
-readln(k); 
+//readln(k); 
 writeln('This is k: '); 
 writeln(k);
 
@@ -27,10 +27,10 @@ if (works) then
     special := exp(j);
     writeln(special); 
     if (something) then 
-        special := 0
+        special := 0;
     else 
         writeln('special does not equal 0'); 
-    end
+    end;
 
 else 
 something := true; 

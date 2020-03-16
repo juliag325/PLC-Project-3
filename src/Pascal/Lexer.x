@@ -45,8 +45,8 @@ tokens :-
   true|false                            { tok_read     TokenBool }
   "'" .* "'"                         { tok_string     TokenString }
   [\+]|[\-]|[\*]|[\/]|[=]|[\<]|[\>]|[\<=]|[\>=]|[\<\>]               { tok_string     TokenOp }
-  [\(]|[\)]|[\,]|[\;]|begin|"end."|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|true|false        { tok_string     TokenK }
-  [:=]|[\:]                             { tok_string     TokenOp }
+  [\(]|[\)]|[\,]|";"|begin|"end."|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|then|else|and|or|not       { tok_string     TokenK }
+  ":="|[\:]                             { tok_string     TokenOp }
   $alpha [$alpha $digit \_ \']*         { tok_string   TokenID }
 
 {

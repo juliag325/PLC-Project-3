@@ -1,20 +1,21 @@
 program test12; 
 
-var 
-days: real; 
-isLeapYear: boolean = true; 
-special: real; 
-divide: real = 4; 
-i: real = 2; 
+//var 
+//days: real; 
+//isLeapYear: boolean = true; 
+//special: real; 
+//divide: real = 4; 
+//i: real = 2; 
 
 begin
 if (isLeapYear) then 
     begin
         if(isLeapYear)then 
-        readln(i) 
+        //readln(i) 
+        writeln(i);
         else writeln('dsghfaj');
         writeln(i); 
-    end
+    end;
 else 
     writeln('nothing'); 
     

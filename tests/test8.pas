@@ -1,15 +1,15 @@
 program test8;
 
-var 
-x, y: boolean; 
+//var 
+//x, y: boolean; 
 
 begin
     x := true;
     if(not x) then 
-    begin
+        begin
         y := true;
         writeln('true');
-        end
+        end;
     else
         begin
         y := false;

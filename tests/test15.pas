@@ -1,9 +1,9 @@
 program test15; 
 
-var 
-correct: boolean = true; 
-i, j: real; 
-isEmpty: boolean = true; 
+// var 
+// correct: boolean = true; 
+// i, j: real; 
+// isEmpty: boolean = true; 
 
 begin 
 begin
@@ -14,16 +14,20 @@ if(correct)then
     begin
         correct := false;
         if(correct) then
-             writeln('Correct is true')
+             writeln('Correct is true');
         else
             begin
             if(not isEmpty) then
-                writeln('This should not print')
+                writeln('This should not print');
             else
                 if(isEmpty) then
                 writeln('IsEmpty is true');
+                else 
+                 writeln('IsEmpty is true');
             end;
     end;
+else
+   writeln('Testing nested blocks'); 
 end;
 end;
 

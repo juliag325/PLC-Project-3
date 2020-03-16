@@ -35,12 +35,12 @@ import Pascal.Lexer
         'end.'           { Token _ (TokenK "end.")  }
         'end'           { Token _ (TokenK "end")  }
         ':='            { Token _ (TokenOp ":=")   }
-        'true'          { Token _ (TokenK "true") }
-        'false'         { Token _ (TokenK "false") }
+        --'true'          { Token _ (TokenBool true) }
+        --'false'         { Token _ (TokenBool false) }
         'break'          { Token _ (TokenK "break") }
         'continue'         { Token _ (TokenK "continue") }
         'and'           { Token _ (TokenK "and") }
-        'or'           { Token _ (TokenK "and") }
+        'or'           { Token _ (TokenK "or") }
         'not'           { Token _ (TokenK "not") }
 	    ','            { Token _ (TokenK ",")   }
         ':'          { Token _ (TokenOp ":") }
@@ -125,24 +125,27 @@ SpecialExp :: {Exp}
     | 'ln' '(' RealExp ')'   { Op3 "ln" $3 }
 
 Exp :: {Exp}
-    : '+' Exp { $2 } -- ignore Plus
-    | '-' Exp { Op1 "-" $2}
-    | ID {Var $1}
-    | real {Real $1}
-    | Exp '+' Exp { Op2 "+" $1 $3 }
+    : Exp '+' Exp { Op2 "+" $1 $3 }
     | Exp '*' Exp { Op2 "*" $1 $3 }
     | Exp '/' Exp { Op2 "/" $1 $3 }
     | Exp '-' Exp { Op2 "-" $1 $3 }
     | '(' Exp ')' { $2 } -- ignore brackets
+    | '+' Exp { $2 } -- ignore Plus
+    | '-' Exp { Op1 "-" $2}
+    | ID {Var $1}
+    | real {Real $1}
+    | int {IntR $1}
 
 BoolExp :: {BoolExp}
-    : 'true' { True_C }
-    | 'false' { False_C }
+    : '(' BoolExp ')' { $2 } 
     | 'not' BoolExp { Not $2 }
     | RelExp { $1 }
     | BoolExp 'and' BoolExp { OpB "and" $1 $3 }
     | BoolExp 'or' BoolExp { OpB "or" $1 $3 }
-    | '(' BoolExp ')' { $2 }
+    
+    | bool { Boolean $1 }
+    --| 'false' { False_C }
+    | ID {VarB $1}
 
 -- Statements
 Lines :: {[String]}
@@ -151,6 +154,7 @@ Lines :: {[String]}
 
 Line :: {String}
     : ID {$1}
+    | string {$1}
     --| BoolExp {[]}
     --| RealExp {[]}
 
@@ -159,18 +163,18 @@ Statements :: {[Statement]}
     | Statement Statements { $1:$2 } -- put statement as first element of statements
 
 Statement :: {Statement}
-    : ID ':=' RealExp { AssignR $1 $3 }
-    | ID ':=' BoolExp { AssignB $1 $3 }
-    | BoolExp {EvalB $1}
-    | RealExp {EvalR $1}
-    | 'readln' '(' ID_list ')' {IO "readln" $3}
-    | 'writeln' '(' Lines ')' {IO "writeln" $3}
-    | 'break' { StopLoop "break"}
-    | 'continue' { StopLoop "continue"}
-    | 'begin' Statements 'end' {Block $2}
-    | 'if' '(' BoolExp ')' 'then' Statement 'else' Statement{ If $3 $6 $8}
-    | 'case' '(' BoolExp ')' 'of' bool ':' Statement ';' bool ':' Statement ';' 'end' { Case $3 $6 $8 $10 $12} -- Needs to be fixed
-    | 'for' ID ':=' int 'to' int 'do' Statement {For $2 $4 $6 $8}
-    | 'while' '(' BoolExp ')' 'do' Statement {While $3 $6}
+    : ID ':=' RealExp ';' { AssignR $1 $3 }
+    | ID ':=' BoolExp ';' { AssignB $1 $3 }
+    | BoolExp ';' {EvalB $1}
+    | RealExp ';' {EvalR $1}
+    --| 'readln' '(' ID_list ')' ';' {IO "readln" $3}
+    | 'writeln' '(' Lines ')' ';' {IO "writeln" $3}
+    | 'break' ';' { StopLoop "break"}
+    | 'continue' ';' { StopLoop "continue"}
+    | 'begin' Statements 'end' ';'{Block $2}
+    | 'if' '(' BoolExp ')' 'then' Statement 'else' Statement  { If $3 $6 $8}
+    | 'case' '(' BoolExp ')' 'of' bool ':' Statement  bool ':' Statement  'end' ';' { Case $3 $6 $8 $9 $11} -- Needs to be fixed
+    | 'for' ID ':=' int 'to' int 'do' Statement  {For $2 $4 $6 $8}
+    | 'while' '(' BoolExp ')' 'do' Statement  {While $3 $6}
 
 {}

@@ -1,17 +1,17 @@
 program test6;
 
-var 
-x, result: boolean; 
-y: boolean = false;
+//var 
+//x, result: boolean; 
+//y: boolean = false;
 
 begin
     x := true;
     x and y;
-    result := x and y or x;
+    result := (x and y) or x;
     writeln(result); 
-    (*result := x and then y;*)
+    //result := x and then y;
     result := x or y;
-    (*result := x or then y;*)
+    //result := x or then y;
     writeln(result); 
     result := not(x or y);
     writeln(result); 
