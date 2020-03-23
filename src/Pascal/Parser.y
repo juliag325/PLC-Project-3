@@ -183,5 +183,5 @@ Statement :: {Statement}
     | 'case' '(' BoolExp ')' 'of' 'false' ':' Statement  'true' ':' Statement  'end' ';' { Case "f" $3 False $8 True $11} -- Needs to be fixed
     | 'for' ID ':=' int 'to' int 'do' Statement  {For $2 $4 $6 $8}
     | 'while' '(' BoolExp ')' 'do' Statement  {While $3 $6}
-
+ 
 {}
