@@ -95,6 +95,13 @@ Type :: {VType} --ADD TO TOKEN LIST
     | 'real' { REAL }
     | 'string' { STRING }
 
+Function :: {Function}
+    : 'function' ID 'begin' Statements 'end'. { $5 }
+
+Procedure :: {Procedure}
+    : 'procedure' ID 'begin' Statements 'end'. 
+    
+
 ID_list :: {[String]}
     : ID  {[$1]}
     | ID ',' ID_list { $1:$3 }
@@ -176,5 +183,5 @@ Statement :: {Statement}
     | 'case' '(' BoolExp ')' 'of' bool ':' Statement  bool ':' Statement  'end' ';' { Case $3 $6 $8 $9 $11} -- Needs to be fixed
     | 'for' ID ':=' int 'to' int 'do' Statement  {For $2 $4 $6 $8}
     | 'while' '(' BoolExp ')' 'do' Statement  {While $3 $6}
-
+ 
 {}

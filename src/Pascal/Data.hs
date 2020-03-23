@@ -71,6 +71,13 @@ data Statement =
 
 data VType =  REAL | BOOL | STRING; 
 
+--data Procedure = 
+    -- Block Statement
+
+--data Function = 
+    --Block [Statement]
+     
+
 data Definition = 
     -- Variable definition, list of var, type  CHECK THIS 
     VarDef [String] VType
