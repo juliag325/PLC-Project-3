@@ -3,6 +3,7 @@ module Pascal.Parser where
 
 import Pascal.Base
 import Pascal.Data
+import Pascal.Val
 import Pascal.Lexer
 }
 
@@ -16,8 +17,9 @@ import Pascal.Lexer
 %token 
         int             { Token _ (TokenInt $$) }
         real            { Token _ (TokenReal $$) }
+        'true'          { Token _ (TokenBool "true") }
+        'false'         { Token _ (TokenBool "false") }
         bool            { Token _ (TokenBool $$)}
-        string          { Token _ (TokenString $$) }
         ID              { Token _ (TokenID $$)  }
         '+'             { Token _ (TokenOp "+")   }
         '-'             { Token _ (TokenOp "-")   }
@@ -31,12 +33,11 @@ import Pascal.Lexer
         '<='             { Token _ (TokenOp "<=")   }
         '('             { Token _ (TokenK  "(")   }
         ')'             { Token _ (TokenK  ")")   }
+        '\''             { Token _ (TokenK  "'")   }
         'begin'         { Token _ (TokenK "begin") }
         'end.'           { Token _ (TokenK "end.")  }
         'end'           { Token _ (TokenK "end")  }
         ':='            { Token _ (TokenOp ":=")   }
-        --'true'          { Token _ (TokenBool true) }
-        --'false'         { Token _ (TokenBool false) }
         'break'          { Token _ (TokenK "break") }
         'continue'         { Token _ (TokenK "continue") }
         'and'           { Token _ (TokenK "and") }
@@ -95,6 +96,12 @@ Type :: {VType} --ADD TO TOKEN LIST
     | 'real' { REAL }
     | 'string' { STRING }
 
+--Function :: {Function}
+--    : 'function' ID 'begin' Statements 'end'. { $2 $5 }
+
+--Procedure :: {Procedure}
+--    : 'procedure' ID 'begin' Statements 'end'. { $2 $5 }
+
 ID_list :: {[String]}
     : ID  {[$1]}
     | ID ',' ID_list { $1:$3 }
@@ -137,26 +144,25 @@ Exp :: {Exp}
     | int {IntR $1}
 
 BoolExp :: {BoolExp}
-    : '(' BoolExp ')' { $2 } 
+    : 'false' { False_C }
+    | 'true' { True_C }
+    | '(' BoolExp ')' { $2 } 
     | 'not' BoolExp { Not $2 }
     | RelExp { $1 }
     | BoolExp 'and' BoolExp { OpB "and" $1 $3 }
     | BoolExp 'or' BoolExp { OpB "or" $1 $3 }
-    
-    | bool { Boolean $1 }
-    --| 'false' { False_C }
     | ID {VarB $1}
 
 -- Statements
-Lines :: {[String]}
+Lines :: {[Line]}
     : Line {[$1]}
     | Line ',' Lines {$1:$3}
 
-Line :: {String}
-    : ID {$1}
-    | string {$1}
-    --| BoolExp {[]}
-    --| RealExp {[]}
+Line :: {Line}
+    : '\'' ID '\'' {LineS $2}
+    | ID {LineId $1}
+    | BoolExp {LineB $1}
+    | RealExp {LineR $1}
 
 Statements :: {[Statement]}
     : { [] } -- nothing; make empty list
@@ -173,7 +179,8 @@ Statement :: {Statement}
     | 'continue' ';' { StopLoop "continue"}
     | 'begin' Statements 'end' ';'{Block $2}
     | 'if' '(' BoolExp ')' 'then' Statement 'else' Statement  { If $3 $6 $8}
-    | 'case' '(' BoolExp ')' 'of' bool ':' Statement  bool ':' Statement  'end' ';' { Case $3 $6 $8 $9 $11} -- Needs to be fixed
+    | 'case' '(' BoolExp ')' 'of' 'true' ':' Statement  'false' ':' Statement  'end' ';' { Case "t" $3 True $8 False $11} -- Needs to be fixed
+    | 'case' '(' BoolExp ')' 'of' 'false' ':' Statement  'true' ':' Statement  'end' ';' { Case "f" $3 False $8 True $11} -- Needs to be fixed
     | 'for' ID ':=' int 'to' int 'do' Statement  {For $2 $4 $6 $8}
     | 'while' '(' BoolExp ')' 'do' Statement  {While $3 $6}
 

@@ -26,12 +26,15 @@ executable Pascal
                      , Pascal.Base
                      , Pascal.Wrapper
                      , Pascal.Val
-                     , Pascal.Eval
   -- other-extensions:    
   build-depends:       base >=4.7
                       , bytestring
                       , array
                       , hspec
+                      , containers
+                      , some
+                      , data-stringmap
+                      , flow
 
   hs-source-dirs:      src
   build-tools:         happy, alex

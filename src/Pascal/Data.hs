@@ -38,30 +38,33 @@ data BoolExp =
     | Comp String Exp Exp
     
     -- true and false constants
-    -- | True_C
-    -- | False_C
-    | Boolean Bool
+    | True_C
+    | False_C
+    -- Boolean Bool
     | VarB String
 
 data Line = 
-    String
+    LineS String
+    | LineId String
+    | LineB BoolExp
+    | LineR Exp
 
 -- Data-structure for statements
 data Statement = 
     -- TODO: add other statements
     -- Variable assignment
-     AssignR String Exp
+    AssignR String Exp
     | AssignB String BoolExp
     -- Evaluate espression
     | EvalR Exp
     | EvalB BoolExp
      -- IO
-    | IO String [String]
+    | IO String [Line]
     -- If statement
     | If BoolExp Statement Statement
     | StopLoop String
     -- Case statement
-    | Case BoolExp Bool Statement Bool Statement
+    | Case String BoolExp Bool Statement Bool Statement
     -- For loop
     | For String Int Int Statement 
     -- While loop
@@ -70,6 +73,12 @@ data Statement =
     | Block [Statement]
 
 data VType =  REAL | BOOL | STRING; 
+
+--data Procedure = 
+    -- Block Statement
+
+--data Function = 
+    --Block [Statement]
 
 data Definition = 
     -- Variable definition, list of var, type  CHECK THIS 

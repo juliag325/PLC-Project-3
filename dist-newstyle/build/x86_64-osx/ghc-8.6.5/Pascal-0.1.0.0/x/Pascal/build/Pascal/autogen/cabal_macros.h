@@ -44,6 +44,39 @@
   (major1) == 0 && (major2) == 10 && (minor) <= 8)
 #endif /* MIN_VERSION_bytestring */
 
+/* package containers-0.6.0.1 */
+#ifndef VERSION_containers
+#define VERSION_containers "0.6.0.1"
+#endif /* VERSION_containers */
+#ifndef MIN_VERSION_containers
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  6 || \
+  (major1) == 0 && (major2) == 6 && (minor) <= 0)
+#endif /* MIN_VERSION_containers */
+
+/* package data-stringmap-1.0.1.1 */
+#ifndef VERSION_data_stringmap
+#define VERSION_data_stringmap "1.0.1.1"
+#endif /* VERSION_data_stringmap */
+#ifndef MIN_VERSION_data_stringmap
+#define MIN_VERSION_data_stringmap(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  0 || \
+  (major1) == 1 && (major2) == 0 && (minor) <= 1)
+#endif /* MIN_VERSION_data_stringmap */
+
+/* package flow-1.0.19 */
+#ifndef VERSION_flow
+#define VERSION_flow "1.0.19"
+#endif /* VERSION_flow */
+#ifndef MIN_VERSION_flow
+#define MIN_VERSION_flow(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  0 || \
+  (major1) == 1 && (major2) == 0 && (minor) <= 19)
+#endif /* MIN_VERSION_flow */
+
 /* package hspec-2.7.1 */
 #ifndef VERSION_hspec
 #define VERSION_hspec "2.7.1"
@@ -54,6 +87,17 @@
   (major1) == 2 && (major2) <  7 || \
   (major1) == 2 && (major2) == 7 && (minor) <= 1)
 #endif /* MIN_VERSION_hspec */
+
+/* package some-1.0.1 */
+#ifndef VERSION_some
+#define VERSION_some "1.0.1"
+#endif /* VERSION_some */
+#ifndef MIN_VERSION_some
+#define MIN_VERSION_some(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  0 || \
+  (major1) == 1 && (major2) == 0 && (minor) <= 1)
+#endif /* MIN_VERSION_some */
 
 /* tool alex-3.2.5 */
 #ifndef TOOL_VERSION_alex

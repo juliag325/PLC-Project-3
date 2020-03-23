@@ -42,12 +42,11 @@ tokens :-
   "(*"(.* | [\n])* "*)"                 ; -- skip multi line comments
   $digit+                               { tok_read     TokenInt }
   $digit+ '.'? $digit*                  { tok_read     TokenReal }
-  true|false                            { tok_read     TokenBool }
-  "'" .* "'"                         { tok_string     TokenString }
-  [\+]|[\-]|[\*]|[\/]|[=]|[\<]|[\>]|[\<=]|[\>=]|[\<\>]               { tok_string     TokenOp }
-  [\(]|[\)]|[\,]|";"|begin|"end."|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|then|else|and|or|not       { tok_string     TokenK }
+  true|false                            { tok_string     TokenBool }
+  [\+]|[\-]|[\*]|[\/]|[=]|[\<]|[\>]|"<="|">="|[\<\>]               { tok_string     TokenOp }
+  [\(]|[\)]|[\,]|";"|[\']|begin|"end."|end|boolean|real|string|var|program|or|sin|cos|exp|sqrt|ln|readln|writeln|break|continue|if|while|for|case|function|procedure|of|to|do|then|else|and|or|not       { tok_string     TokenK }
   ":="|[\:]                             { tok_string     TokenOp }
-  $alpha [$alpha $digit \_ \']*         { tok_string   TokenID }
+  $alpha [$alpha $digit \_ ]*         { tok_string   TokenID }
 
 {
 
@@ -68,7 +67,7 @@ tokenToPosN (Token p _) = p
 -- TODO: Add your own token types here
 data TokenClass
  = TokenOp     String
- | TokenBool   Bool
+ | TokenBool   String
  | TokenK      String
  | TokenInt    Int
  | TokenReal   Float
