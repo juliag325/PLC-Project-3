@@ -1,12 +1,13 @@
 program test30;
 
 var a, b, f : real;
+var g : real;
 
-function greatestCommonDivisor(a, b: real): real;
+function greatestCommonDivisor(a, b: real;): real;
 var
     temp: real;
 begin
-  while b >= 0 do
+  while (b >= 0) do
   begin
     temp := b;
     writeln('temp ', temp);
@@ -21,9 +22,9 @@ end;
 
 begin
   writeln('a = ');
-  readln(a);
+  a := 9;
   writeln('b = ');
-  readln(b);
+  b := 7;
   f:=greatestCommonDivisor(a, b);
   writeln('not gcd of ', a, ' and ', b, ' is ', f);
 end.

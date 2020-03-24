@@ -1,10 +1,10 @@
 program test22;
 var n, f: real;
-function factorial(n: real): real;
+function factorial(n: real;): real;
 begin
     factorial:= 1;
     writeln('help');
-  while n >=1 do
+  while (n >=1) do
   begin
     factorial :=  factorial * n;
     n := n - 1;
@@ -14,7 +14,7 @@ end;
 
 begin
   writeln('n = ');
-  readln(n);
+  n := 6;
   f:=factorial(n);
   writeln(f);
   writeln(n, '! = ',f);

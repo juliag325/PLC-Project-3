@@ -21,6 +21,7 @@ import Pascal.Lexer
         'false'         { Token _ (TokenBool "false") }
         bool            { Token _ (TokenBool $$)}
         ID              { Token _ (TokenID $$)  }
+        string          { Token _ (TokenString $$)  }
         '+'             { Token _ (TokenOp "+")   }
         '-'             { Token _ (TokenOp "-")   }
         '*'             { Token _ (TokenOp "*")   }
@@ -69,6 +70,7 @@ import Pascal.Lexer
         'to'           { Token _ (TokenK "to") }
         'do'           { Token _ (TokenK "do") }
         ';'           { Token _ (TokenK ";") }
+        ' '           { Token _ (TokenK " ") }
 
 -- associativity of operators in reverse precedence order
 %nonassoc '>' '>=' '<' '<=' '==' '<>'
@@ -79,7 +81,7 @@ import Pascal.Lexer
 
 -- Entry point
 Program :: {Program}
-    : 'program' ID ';' 'begin' Statements 'end.' { $5 }
+    : 'program' ID ';' Defs 'begin' Statements 'end.' {($4, $6)}
 
 -- Variable definitions
 Defs :: {[Definition]} 
@@ -87,9 +89,16 @@ Defs :: {[Definition]}
     | Definition Defs {$1:$2 } -- put statement as Definition
 
 Definition :: {Definition}
-    : 'var' ID_list ':' Type  {VarDef $2 $4 }
-    | 'var' ID ':' Type '=' Exp  {R $2 $4 $6}
-    | 'var' ID ':' Type '=' BoolExp {B $2 $4 $6}
+    : 'var' ID ':' Type ';' {VarDef1 $2 $4 }
+    | 'var' ID_list ':' Type ';' {VarDef $2 $4 }
+    | 'var' ID ':' Type '=' Exp  ';' {R $2 $4 $6}
+    | 'var' ID ':' Type '=' BoolExp ';' {B $2 $4 $6}
+--    | 'procedure' ID '(' Method_list')' ';' 'begin' Statements 'end'';' {ProcNV $2 $4 $8}
+--    | 'function' ID '(' Method_list')' ':' Type ';' 'begin' Statements 'end'';' {FuncNV $2 $4 $7 $10}
+--    | 'procedure' ID '(' Method_list Var_list ')' ';' 'begin' Statements 'end'';' {ProcN $2 $4 $5 $9}
+--    | 'function' ID '(' Method_list Var_list ')' ':' Type ';' 'begin' Statements 'end'';' {FuncN $2 $4 $5 $8 $11}
+    | 'procedure' ID '(' Method_list Var_list ')' ';' Defs 'begin' Statements 'end'';' {Proc $2 $4 $5 ($8, $10)}
+    | 'function' ID '(' Method_list Var_list ')' ':' Type ';' Defs 'begin' Statements 'end'';' {Func $2 $4 $5 $8 ($10, $12)}
 
 Type :: {VType} --ADD TO TOKEN LIST
     : 'boolean' { BOOL }
@@ -101,6 +110,20 @@ Type :: {VType} --ADD TO TOKEN LIST
 
 --Procedure :: {Procedure}
 --    : 'procedure' ID 'begin' Statements 'end'. { $2 $5 }
+
+Method_list ::  {[([String], VType)]}
+    : {[]}
+    | List ';' Method_list {$1:$3}
+
+List :: {([String], VType)}
+    : ID_list ':' Type  {($1, $3)}
+
+Var_list :: {[(String, VType)]}
+    : {[]}
+    | Var ';' Var_list {$1:$3}
+
+Var :: {(String, VType)}
+    : 'var' ID ':' Type  {($2, $4)} 
 
 ID_list :: {[String]}
     : ID  {[$1]}
@@ -139,6 +162,7 @@ Exp :: {Exp}
     | '(' Exp ')' { $2 } -- ignore brackets
     | '+' Exp { $2 } -- ignore Plus
     | '-' Exp { Op1 "-" $2}
+    | ID '(' Lines ')' { FunCallR $1 $3 }
     | ID {Var $1}
     | real {Real $1}
     | int {IntR $1}
@@ -149,6 +173,7 @@ BoolExp :: {BoolExp}
     | '(' BoolExp ')' { $2 } 
     | 'not' BoolExp { Not $2 }
     | RelExp { $1 }
+    | ID '(' Lines ')' { FunCallB $1 $3 }
     | BoolExp 'and' BoolExp { OpB "and" $1 $3 }
     | BoolExp 'or' BoolExp { OpB "or" $1 $3 }
     | ID {VarB $1}
@@ -159,7 +184,7 @@ Lines :: {[Line]}
     | Line ',' Lines {$1:$3}
 
 Line :: {Line}
-    : '\'' ID '\'' {LineS $2}
+    : string {LineS $1}
     | ID {LineId $1}
     | BoolExp {LineB $1}
     | RealExp {LineR $1}
@@ -169,7 +194,10 @@ Statements :: {[Statement]}
     | Statement Statements { $1:$2 } -- put statement as first element of statements
 
 Statement :: {Statement}
-    : ID ':=' RealExp ';' { AssignR $1 $3 }
+    : ID ':=' ID ';' {Assign $1 $3}
+    | ID '(' Lines ')' ';' { FunCall $1 $3 }
+    | ID ':=' ID '(' Lines ')' ';' { AssignFunCall $1 $3 $5}
+    | ID ':=' RealExp ';' { AssignR $1 $3 }
     | ID ':=' BoolExp ';' { AssignB $1 $3 }
     | BoolExp ';' {EvalB $1}
     | RealExp ';' {EvalR $1}
@@ -179,9 +207,10 @@ Statement :: {Statement}
     | 'continue' ';' { StopLoop "continue"}
     | 'begin' Statements 'end' ';'{Block $2}
     | 'if' '(' BoolExp ')' 'then' Statement 'else' Statement  { If $3 $6 $8}
-    | 'case' '(' BoolExp ')' 'of' 'true' ':' Statement  'false' ':' Statement  'end' ';' { Case "t" $3 True $8 False $11} -- Needs to be fixed
-    | 'case' '(' BoolExp ')' 'of' 'false' ':' Statement  'true' ':' Statement  'end' ';' { Case "f" $3 False $8 True $11} -- Needs to be fixed
+    | 'case' '(' BoolExp ')' 'of' 'true' ':' Statement  'false' ':' Statement  'end' ';' { Case "t" $3 True $8 False $11} 
+    | 'case' '(' BoolExp ')' 'of' 'false' ':' Statement  'true' ':' Statement  'end' ';' { Case "f" $3 False $8 True $11} 
     | 'for' ID ':=' int 'to' int 'do' Statement  {For $2 $4 $6 $8}
     | 'while' '(' BoolExp ')' 'do' Statement  {While $3 $6}
+    | ID '(' Lines ')' ';' {ProcCall $1 $3}
  
 {}

@@ -1,13 +1,19 @@
 program test2;
 
-//var 
-//taxrate: real;
-//x: real = 4;
-//choice, isready: boolean;
-//y: boolean = true;
+var 
+taxrate, a, b: real;
+
+var
+x: real = 4;
+var
+choice, isready: boolean;
+var
+y: boolean = true;
 
 
 begin
+	writeln(x);
+	writeln(choice);
    4+2;
 	a := 3+2*7;
 	b := 6-5;

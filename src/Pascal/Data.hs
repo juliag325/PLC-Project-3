@@ -21,7 +21,7 @@ data Exp =
     -- special operator
     | Op3 String Exp 
     -- function call: FunctionCall name ListArguments
-    | FunCall String [Exp]
+    | FunCallR String [Line]
     -- real value: e.g. Real 1.0
     | Real Float
     | IntR Int
@@ -36,7 +36,7 @@ data BoolExp =
     | Not BoolExp
     -- comparison operator: Comp name expression expression
     | Comp String Exp Exp
-    
+    | FunCallB String [Line]
     -- true and false constants
     | True_C
     | False_C
@@ -53,7 +53,10 @@ data Line =
 data Statement = 
     -- TODO: add other statements
     -- Variable assignment
-    AssignR String Exp
+    Assign String String
+    | FunCall String [Line]
+    | AssignFunCall String String [Line]
+    | AssignR String Exp
     | AssignB String BoolExp
     -- Evaluate espression
     | EvalR Exp
@@ -71,6 +74,7 @@ data Statement =
     | While BoolExp Statement
     -- Block
     | Block [Statement]
+    | ProcCall String [Line]
 
 data VType =  REAL | BOOL | STRING; 
 
@@ -82,15 +86,22 @@ data VType =  REAL | BOOL | STRING;
 
 data Definition = 
     -- Variable definition, list of var, type  CHECK THIS 
-    VarDef [String] VType
+    VarDef1 String VType
+    | VarDef [String] VType
     | R String VType Exp
     | B String VType BoolExp
     -- Procedures
-    | Proc String [(String, VType)] Statement 
+    | Proc String [([String], VType)] [(String, VType)] ([Definition],[Statement])
+    | Func String [([String], VType)] [(String, VType)] VType ([Definition],[Statement])
+--    | ProcN String [([String], VType)] [(String, VType)] [Statement]
+--    | FuncN String [([String], VType)] [(String, VType)] VType [Statement]
+--    | ProcNV String [([String], VType)] [Statement]
+--    | FuncNV String [([String], VType)] VType [Statement]
+    -- | Proc String [(String, VType)] Statement 
 
 
 -- Data-structure for hole program
 -- TODO: add declarations and other useful stuff
 -- Hint: make a tuple containing the other ingredients
 --main program is list of definitions: use a tuple (check book)
-type Program = [Statement]
+type Program = ([Definition],[Statement])
