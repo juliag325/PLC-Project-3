@@ -1,5 +1,5 @@
 module Pascal.Val (
-    Val,
+    Val(..),
     strToVal,
     toFloat,
     toString,

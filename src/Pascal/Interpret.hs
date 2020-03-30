@@ -1,13 +1,42 @@
 module Pascal.Interpret 
 (
-    interpret
+    interpret,
+    mapLookUp,
+    mapInsert,
+    mapNewScope,
+    mapPopScope,
+    realExp,
+    booleanExp,
+    assignR,
+    assignB,
+    while,
+    breakLines,
+    writeln,
+    removePunc,
+    evalLoops,
+    breakProgramLoop,
+    for,
+    cases,
+    evalStatements,
+    procedure,
+    functions,
+    assignBack,
+    fpAssignR,
+    fpAssignV,
+    fpAssignMult,
+    line,
+    varName,
+    breakProgram,
+    listR,
+    listB,
+    evalDef,
+    breakDef
 )
 where
 
 import Pascal.Data
 --import Pascal.Map as Map
-import Pascal.Val as Val
-import Data.Some
+import Pascal.Val
 import qualified Data.Map.Strict as Map
 import Data.Maybe (isJust)
 import Text.Read (readMaybe)
