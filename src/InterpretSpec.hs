@@ -203,11 +203,18 @@ main = hspec $ do
         fpAssignV [LineId "s"] (Map.fromList[("s", Integer 5)]) [(["s"], STRING)] ("s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Integer 5)])
         fpAssignV [LineS "t"] (Map.fromList[("t", Integer 5)]) [(["t"], STRING)] ("t") [Map.fromList[("t", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("t", Map.fromList[("t", Id "t")])
 
+    describe "writeln" $ do 
+      it "writeln" $ do 
+        writeln (LineId "s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("s",STRING)], STRING, [], [] ))]) `shouldBe` "5"
+        writeln (LineS "t") [Map.fromList[("s", Integer 9)]] (Map.fromList[("fname" , ([([], STRING)], [("t",STRING)], STRING, [], [] ))]) `shouldBe` "t"
+        writeln (LineB True_C) [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("s",STRING)], STRING, [], [] ))]) `shouldBe` "True"
 
---[Line] -> Map.Map String Val -> [([String], VType)] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)  
---[Line] -> VType -> Map.Map String Val -> [String] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)
---[Line] -> Map.Map String Val -> [(String, VType)] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)
 
+
+
+        
+
+--Line -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> String
 
 
 

@@ -1,10 +1,10 @@
 program test17; 
 
 
-//var
-   //x, y: boolean;
-   //z: real = 10;
-   //d: real = 6;
+var
+   x, y: boolean;
+   z: real = 10;
+   d: real = 6;
 
 
 begin
