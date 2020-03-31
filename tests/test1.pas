@@ -1,5 +1,8 @@
 program test1;
 
+var a : real = 5;
+var b : real = 8;
+
 begin
 	4+2;
 	a := 3+2*7;

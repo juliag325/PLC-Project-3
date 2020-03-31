@@ -23,7 +23,7 @@ data Exp =
     -- function call: FunctionCall name ListArguments
     | FunCallR String [Line]
     -- real value: e.g. Real 1.0
-    | Real Float
+    | Reall Float
     | IntR Int
     -- variable: e.g. Var "x"
     | Var String

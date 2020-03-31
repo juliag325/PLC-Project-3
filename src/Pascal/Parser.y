@@ -164,7 +164,7 @@ Exp :: {Exp}
     | '-' Exp { Op1 "-" $2}
     | ID '(' Lines ')' { FunCallR $1 $3 }
     | ID {Var $1}
-    | real {Real $1}
+    | real {Reall $1}
     | int {IntR $1}
 
 BoolExp :: {BoolExp}
