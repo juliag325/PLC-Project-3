@@ -3,13 +3,9 @@ program test17;
 
 var
    x, y: boolean;
-<<<<<<< HEAD
-   z: real = 10;
-=======
 var
    z: real = 10;
 var
->>>>>>> 20e93600ed3eb3d44ad0d5856047d2deb093e3d6
    d: real = 6;
 
 
