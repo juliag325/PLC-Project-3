@@ -89,9 +89,6 @@ main = hspec $ do
       realExp (Op3 "exp" (Pascal.Data.Real 0.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1.2214028, "")
       realExp (Op3 "exp" (Pascal.Data.IntR 20))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (4.8516518e8, "")
 
-  --it "calls a real function" $ do 
-      --realExp (FunCallR "fname" [LineS ""]) ("") [] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` (4, "fname")
-
   describe "booleanExp" $ do 
     it "and" $ do 
       booleanExp (OpB "and" True_C True_C) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
@@ -157,10 +154,6 @@ main = hspec $ do
       breakLines [LineS "a"] [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` "a"
       breakLines [LineS "basdfaafda"] [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` "basdfaafda"
 
-  --describe "writeln" $ do 
-    --it "writes to line" $ do 
-      --writeln [LineR Pascal.Data.IntR 3] [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` "a"
-
   describe "removePunc" $ do
     it "removes punctuation" $ do
       removePunc "hey'" `shouldBe` "hey"
@@ -194,17 +187,29 @@ main = hspec $ do
       listB ("t") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
       listB ("1") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
 
-   
+  describe "FpAssignMult" $ do 
+    it "assigns mult to functions" $ do 
+      fpAssignMult [LineId "s"] (STRING) (Map.fromList[("s", Integer 5)]) ["s"] ("s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Integer 5)])
+      fpAssignMult [LineS "s"] (STRING) (Map.fromList[("s", Integer 5)]) ["s"] ("s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Id "s")])
+      --fpAssignMult [LineR 5] (REAL) (Map.fromList[("s", 5)]) ["s"] ("s") [Map.fromList[("s", 4)]] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Id "s")])
+
+    describe "FpAssignR" $ do 
+      it "assigns real to functions" $ do 
+        fpAssignR [LineId "s"] (Map.fromList[("s", Integer 5)]) [] ("s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Integer 5)])
+        fpAssignR [LineS "t"] (Map.fromList[("t", Integer 5)]) [] ("t") [Map.fromList[("t", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("t", Map.fromList[("t", Integer 5)])
+
+    describe "FpAssignV" $ do 
+      it "assigns real to functions" $ do 
+        fpAssignV [LineId "s"] (Map.fromList[("s", Integer 5)]) [(["s"], STRING)] ("s") [Map.fromList[("s", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("s", Map.fromList[("s", Integer 5)])
+        fpAssignV [LineS "t"] (Map.fromList[("t", Integer 5)]) [(["t"], STRING)] ("t") [Map.fromList[("t", Integer 5)]] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("t", Map.fromList[("t", Id "t")])
 
 
-    
+--[Line] -> Map.Map String Val -> [([String], VType)] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)  
+--[Line] -> VType -> Map.Map String Val -> [String] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)
+--[Line] -> Map.Map String Val -> [(String, VType)] -> String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> (String, Map.Map String Val)
 
 
 
-
-
-
---String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> [Map.Map String Val]
 
 
 
