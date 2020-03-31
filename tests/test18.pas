@@ -2,7 +2,9 @@ program test18;
 
 var
 x, y: boolean;
+var
 z: real = 6;
+var
 i: real;
 
 begin
@@ -35,13 +37,15 @@ end.
 
 (*
 Expected Output: 
-false
-4.0
-5.0
-6.0
-7.0
-8.0
-9.0
-10.0
+False
+3
+4
+5
+6
+7
+8
+9
+10
 Testing for-do statements
+
 *)

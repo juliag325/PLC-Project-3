@@ -2,9 +2,12 @@ program test7;
 
 var 
 x, result: real; 
-y: real = 0.5;
-z: real = 3.5;
-w: real = 0.1;
+var 
+y: real = 5;
+var
+z: real = 3;
+var
+w: real = 1;
 
 begin
     x := 2;
@@ -14,5 +17,6 @@ end.
 
 (*
 Expected Output: 
--1.0285714285714285
+11.666667
+
 *)

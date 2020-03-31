@@ -2,8 +2,11 @@ program test10;
 
 var 
 x: real = 4; 
+var
 j, r: real;
+var
 correct: boolean = true; 
+var
 somethingelse: boolean = true; 
 
 begin
@@ -16,5 +19,6 @@ end.
 
 (*
 Expected Output:
-The value ofx is 4
+The value of x is 4
+
 *)

@@ -24,7 +24,8 @@ end.
 
 (*
 Expected Output: 
-This is part of outer statement 
-This is part of inner statement
-Testing nested case statements 
+This  is part of outer statement
+This  is part of inner statement
+Testing nested case statements
+
 *)

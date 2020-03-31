@@ -4,13 +4,14 @@ var
     i: real; 
 
 begin 
-i: = 10; 
+i:= 10; 
 for i := 0 to 10 do 
     begin 
 
     if (i >= 4) then 
         continue; 
-    
+    else
+        writeln('why');
     writeln('the value of i is ', i); 
 
     end; 
@@ -18,8 +19,13 @@ for i := 0 to 10 do
 end. 
 
 (*
-the value of i is 0.0
-the value of i is 1.0
-the value of i is 2.0
-the value of i is 3.0
+why
+the value of i is 0
+why
+the value of i is 1
+why
+the value of i is 2
+why
+the value of i is 3
+
 *)

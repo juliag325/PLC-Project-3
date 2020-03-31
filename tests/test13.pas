@@ -1,12 +1,18 @@
 program test13; 
 
 var 
-i: real = 4; 
+i: real = 4;
+var 
 j: real = 8;
-operation: real;  
-k: real = 2.0 
+var
+operation: real;
+var  
+k: real = 2; 
+var
 works: boolean = false;
+var
 something: boolean = false;  
+var
 special: real; 
 
 begin 
@@ -41,10 +47,11 @@ end.
 (*
 Exxpected Output: 
 This is k: 
-2.0 (whatever you input k as, in this case we put 2)
-12.0 
+2.0
+12.0
 1.0
-2980.9579870417283
+2980.958
 special does not equal 0
-false
+False
+
 *)

@@ -2,7 +2,9 @@ program test9;
 
 var 
 x: real = 4; 
+var
 a, r: real; 
+var
 here: boolean = true; 
 
 begin
@@ -17,10 +19,12 @@ end.
 
 (*
 Expected Output:
-true 
-2.0         (this is the sqrt of x)
-54.598150033144236  (this is exp(4))
-0.8414709848078965  (this is sin(1))
-0.5403023058681398  (this is cos(1))
-0.0     (this is ln(1))
+True
+4.0
+2.0
+54.59815
+0.84147096
+0.5403023
+0.0
+
 *)

@@ -30,10 +30,12 @@ end.
 
 (*
 Expected Output: 
- Enter three numbers: 
-4
-9
-2
-min
- Minimum: 2.0
+0.0
+0.0
+0.0
+Enter three numbers
+fsh
+3.0
+Minimum: 3.0
+
 *)

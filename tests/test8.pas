@@ -26,6 +26,7 @@ end.
 
 (*
 Expected Output: 
-X is true so this executed 
-Y is false 
+X is true so this executed
+Y is false
+
 *)

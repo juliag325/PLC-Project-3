@@ -2,13 +2,20 @@ program test14;
 
 var 
 days: real; 
+var
 endGame: boolean = true; 
+var
 playing: boolean = true;
+var
 score: real; 
+var
 specialScore: real; 
+var
 playerOne: real = 0; 
+var
 playerTwo: real = 0; 
-input: real = 2
+var
+input: real = 2;
 
 begin
 if (endGame) then 
@@ -18,8 +25,7 @@ if (endGame) then
         else writeln('playerOne');
         playerTwo := playerTwo + 30; 
     end;
-else 
-    writeln('No game exists.'); 
+else writeln('No game exists'); 
     
 score := playerOne + playerTwo; 
 specialScore := cos(30 * score); 
@@ -38,5 +44,7 @@ Expected Output:
 This is the score: 
 31.0
 This is the special score: 
-0.9960798396174231
+0.99607986
+2.0
+
 *)
