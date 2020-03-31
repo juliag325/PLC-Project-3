@@ -102,7 +102,7 @@ realExp (Op3 "ln" e1) o m fp = let (x, out) = (realExp e1 o m fp)
 realExp (FunCallR s a) o m fp =  let (out, newS, newM, return) = functions s a o m fp
                                 in (toFloat(return), out)
 
-realExp (Pascal.Data.Real e1) o m fp = (e1, o)
+realExp (Pascal.Data.Reall e1) o m fp = (e1, o)
 realExp (IntR e1) o m fp = (fromIntegral e1, o)
 
 realExp (Var s) o m fp = (toFloat(mapLookUp s m), o) 

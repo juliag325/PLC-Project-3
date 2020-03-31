@@ -817,7 +817,7 @@ happyReduce_48 = happySpecReduce_1  12# happyReduction_48
 happyReduction_48 happy_x_1
 	 =  case happyOutTok happy_x_1 of { (Token _ (TokenReal happy_var_1)) -> 
 	happyIn16
-		 (Real happy_var_1
+		 (Reall happy_var_1
 	)}
 
 happyReduce_49 :: () => Happy_GHC_Exts.Int# -> Token -> Happy_GHC_Exts.Int# -> Happy_IntList -> HappyStk (HappyAbsSyn ) -> Parser (HappyAbsSyn )

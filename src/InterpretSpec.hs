@@ -39,54 +39,54 @@ main = hspec $ do
 
   describe "realExp" $ do 
     it "adding two numbers together" $ do
-      realExp (Op2 "+" (Pascal.Data.Real 3.5) (Pascal.Data.Real 4.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.7, "")
+      realExp (Op2 "+" (Pascal.Data.Reall 3.5) (Pascal.Data.Reall 4.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.7, "")
       realExp (Op2 "+" (Pascal.Data.IntR 5) (Pascal.Data.IntR 10))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (15, "")
-      realExp (Op2 "+" (Pascal.Data.IntR 2) (Pascal.Data.Real 8))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (10, "")
-      realExp (Op2 "+" (Pascal.Data.IntR 2) (Pascal.Data.Real 8))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (10, "")
+      realExp (Op2 "+" (Pascal.Data.IntR 2) (Pascal.Data.Reall 8))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (10, "")
+      realExp (Op2 "+" (Pascal.Data.IntR 2) (Pascal.Data.Reall 8))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (10, "")
 
 
     it "subtracting two numbers together" $ do 
-      realExp (Op2 "-" (Pascal.Data.Real 5.5) (Pascal.Data.Real 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1.5, "")
+      realExp (Op2 "-" (Pascal.Data.Reall 5.5) (Pascal.Data.Reall 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1.5, "")
       realExp (Op2 "-" (Pascal.Data.IntR 10) (Pascal.Data.IntR 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (8, "")
-      realExp (Op2 "-" (Pascal.Data.IntR 10) (Pascal.Data.Real 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (8, "")
-      realExp (Op2 "-" (Pascal.Data.Real 15.5) (Pascal.Data.IntR 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (13.5, "")
+      realExp (Op2 "-" (Pascal.Data.IntR 10) (Pascal.Data.Reall 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (8, "")
+      realExp (Op2 "-" (Pascal.Data.Reall 15.5) (Pascal.Data.IntR 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (13.5, "")
       realExp (Op2 "-" (Pascal.Data.IntR 3) (Pascal.Data.IntR 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (-2, "")
       
     it "multiplying two numbers together" $ do
       realExp (Op2 "*" (Pascal.Data.IntR 3) (Pascal.Data.IntR 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (6, "")
-      realExp (Op2 "*" (Pascal.Data.Real 2.2) (Pascal.Data.Real 3.6))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.92, "")
-      realExp (Op2 "*" (Pascal.Data.IntR 10) (Pascal.Data.Real 2.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (22.0, "")
+      realExp (Op2 "*" (Pascal.Data.Reall 2.2) (Pascal.Data.Reall 3.6))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.92, "")
+      realExp (Op2 "*" (Pascal.Data.IntR 10) (Pascal.Data.Reall 2.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (22.0, "")
       realExp (Op2 "*" (Pascal.Data.IntR 3) (Pascal.Data.IntR 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (12, "")
 
     it "divides two numbers together" $ do 
       realExp (Op2 "/" (Pascal.Data.IntR 2) (Pascal.Data.IntR 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1, "")
-      realExp (Op2 "/" (Pascal.Data.Real 10) (Pascal.Data.Real 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.5, "")
-      realExp (Op2 "/" (Pascal.Data.IntR 10) (Pascal.Data.Real 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (5, "")
-      realExp (Op2 "/" (Pascal.Data.Real 8) (Pascal.Data.IntR 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.0, "")
+      realExp (Op2 "/" (Pascal.Data.Reall 10) (Pascal.Data.Reall 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.5, "")
+      realExp (Op2 "/" (Pascal.Data.IntR 10) (Pascal.Data.Reall 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (5, "")
+      realExp (Op2 "/" (Pascal.Data.Reall 8) (Pascal.Data.IntR 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.0, "")
 
     it "interprets sine function" $ do
       realExp (Op3 "sin" (Pascal.Data.IntR 1))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.84147096, "")
-      realExp (Op3 "sin" (Pascal.Data.Real 0.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.47942555, "")
+      realExp (Op3 "sin" (Pascal.Data.Reall 0.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.47942555, "")
       realExp (Op3 "sin" (Pascal.Data.IntR 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (-0.9589243, "")
 
     it "interprets cos function" $ do
       realExp (Op3 "cos" (Pascal.Data.IntR 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.2836622, "")
-      realExp (Op3 "cos" (Pascal.Data.Real 0.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.87758255, "")
+      realExp (Op3 "cos" (Pascal.Data.Reall 0.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.87758255, "")
       realExp (Op3 "cos" (Pascal.Data.IntR 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (0.2836622, "")
 
     it "interprets exp function" $ do 
       realExp (Op3 "exp" (Pascal.Data.IntR 4))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (54.59815, "")
-      realExp (Op3 "exp" (Pascal.Data.Real 22.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (5.910522e9, "")
-      realExp (Op3 "exp" (Pascal.Data.Real 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.389056, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 22.5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (5.910522e9, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.389056, "")
 
     it "interprets sqrt function" $ do 
       realExp (Op3 "exp" (Pascal.Data.IntR 1))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.7182817, "")
-      realExp (Op3 "exp" (Pascal.Data.Real 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (148.41316, "")
-      realExp (Op3 "exp" (Pascal.Data.Real 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.389056, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 5))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (148.41316, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (7.389056, "")
 
     it "interprets ln function" $ do
-      realExp (Op3 "exp" (Pascal.Data.Real 1))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.7182817, "")
-      realExp (Op3 "exp" (Pascal.Data.Real 0.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1.2214028, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 1))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (2.7182817, "")
+      realExp (Op3 "exp" (Pascal.Data.Reall 0.2))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (1.2214028, "")
       realExp (Op3 "exp" (Pascal.Data.IntR 20))  ("") [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` (4.8516518e8, "")
 
   describe "booleanExp" $ do 
@@ -105,34 +105,34 @@ main = hspec $ do
       booleanExp (Not False_C) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
 
     it "=" $ do 
-      booleanExp (Comp "=" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp "=" (Pascal.Data.Real 2) (Pascal.Data.Real 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
-      booleanExp (Comp "=" (Pascal.Data.Real 2) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "=" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "=" (Pascal.Data.Reall 2) (Pascal.Data.Reall 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "=" (Pascal.Data.Reall 2) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
 
     it "<>" $ do 
-      booleanExp (Comp "<>" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
-      booleanExp (Comp "<>" (Pascal.Data.Real 2) (Pascal.Data.Real 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp "<>" (Pascal.Data.Real 2) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "<>" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "<>" (Pascal.Data.Reall 2) (Pascal.Data.Reall 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "<>" (Pascal.Data.Reall 2) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
 
     it ">" $ do 
-      booleanExp (Comp ">" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
-      booleanExp (Comp ">" (Pascal.Data.Real 5) (Pascal.Data.Real 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp ">" (Pascal.Data.Real 1) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp ">" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp ">" (Pascal.Data.Reall 5) (Pascal.Data.Reall 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp ">" (Pascal.Data.Reall 1) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
 
     it "<" $ do 
-      booleanExp (Comp "<" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
-      booleanExp (Comp "<" (Pascal.Data.Real 1) (Pascal.Data.Real 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp "<" (Pascal.Data.Real 4) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "<" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "<" (Pascal.Data.Reall 1) (Pascal.Data.Reall 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "<" (Pascal.Data.Reall 4) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
 
     it "<=" $ do 
-      booleanExp (Comp "<=" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp "<=" (Pascal.Data.Real 2) (Pascal.Data.Real 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp "<=" (Pascal.Data.Real 4) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp "<=" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "<=" (Pascal.Data.Reall 2) (Pascal.Data.Reall 4)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp "<=" (Pascal.Data.Reall 4) (Pascal.Data.IntR 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
 
     it ">=" $ do 
-      booleanExp (Comp ">=" (Pascal.Data.Real 5) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp ">=" (Pascal.Data.Real 2) (Pascal.Data.Real 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
-      booleanExp (Comp ">=" (Pascal.Data.Real 2) (Pascal.Data.IntR 5)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
+      booleanExp (Comp ">=" (Pascal.Data.Reall 5) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp ">=" (Pascal.Data.Reall 2) (Pascal.Data.Reall 2)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
+      booleanExp (Comp ">=" (Pascal.Data.Reall 2) (Pascal.Data.IntR 5)) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
     
     it "True_C" $ do 
       booleanExp (True_C) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
@@ -141,8 +141,8 @@ main = hspec $ do
   describe "assignR" $ do 
     it "assign value to real type" $ do 
       assignR ("int") (Pascal.Data.IntR 3) ("a") [Map.fromList[("a", Integer 3)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("a",[Map.fromList [("a",Integer 3),("int", Pascal.Val.Real 3.0)]])
-      assignR ("real") (Pascal.Data.Real 5) ("s") [Map.fromList[("s", Pascal.Val.Real 3.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("s",[Map.fromList [("s",Pascal.Val.Real 3.0),("real", Pascal.Val.Real 5.0)]])
-      assignR ("real") (Pascal.Data.Real 2) ("t") [Map.fromList[("t", Pascal.Val.Real 2.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("t",[Map.fromList [("t",Pascal.Val.Real 2.0),("real", Pascal.Val.Real 2.0)]])
+      assignR ("real") (Pascal.Data.Reall 5) ("s") [Map.fromList[("s", Pascal.Val.Real 3.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("s",[Map.fromList [("s",Pascal.Val.Real 3.0),("real", Pascal.Val.Real 5.0)]])
+      assignR ("real") (Pascal.Data.Reall 2) ("t") [Map.fromList[("t", Pascal.Val.Real 2.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("t",[Map.fromList [("t",Pascal.Val.Real 2.0),("real", Pascal.Val.Real 2.0)]])
 
   describe "assignB" $ do 
     it "assign value to boolean type" $ do 
