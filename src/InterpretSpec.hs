@@ -141,23 +141,70 @@ main = hspec $ do
       booleanExp (True_C) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (True, "")
       booleanExp (False_C) ("") [] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` (False, "")
 
-    --funcallB
-    --error
+  describe "assignR" $ do 
+    it "assign value to real type" $ do 
+      assignR ("int") (Pascal.Data.IntR 3) ("a") [Map.fromList[("a", Integer 3)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("a",[Map.fromList [("a",Integer 3),("int", Pascal.Val.Real 3.0)]])
+      assignR ("real") (Pascal.Data.Real 5) ("s") [Map.fromList[("s", Pascal.Val.Real 3.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("s",[Map.fromList [("s",Pascal.Val.Real 3.0),("real", Pascal.Val.Real 5.0)]])
+      assignR ("real") (Pascal.Data.Real 2) ("t") [Map.fromList[("t", Pascal.Val.Real 2.0)]] (Map.fromList[("fname" , ([([], REAL)], [("fname",REAL)], REAL, [], [] ))]) `shouldBe` ("t",[Map.fromList [("t",Pascal.Val.Real 2.0),("real", Pascal.Val.Real 2.0)]])
+
+  describe "assignB" $ do 
+    it "assign value to boolean type" $ do 
+      assignB ("bool") (Pascal.Data.True_C) ("s") [Map.fromList[("s", Pascal.Val.Boolean True)]] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` ("s",[Map.fromList [("s",Pascal.Val.Boolean True),("bool", Pascal.Val.Boolean True)]])
+      assignB ("bool") (Pascal.Data.False_C) ("t") [Map.fromList[("t", Pascal.Val.Boolean False)]] (Map.fromList[("fname" , ([([], BOOL)], [("fname",BOOL)], BOOL, [], [] ))]) `shouldBe` ("t",[Map.fromList [("t",Pascal.Val.Boolean False),("bool", Pascal.Val.Boolean False)]])
+
+  describe "breakLines" $ do 
+    it "breaks lines" $ do 
+      breakLines [LineS "a"] [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` "a"
+      breakLines [LineS "basdfaafda"] [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` "basdfaafda"
 
   --describe "writeln" $ do 
-    --writeln (Pascal.Data.LineS "j") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("hey")
-  
+    --it "writes to line" $ do 
+      --writeln [LineR Pascal.Data.IntR 3] [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` "a"
 
+  describe "removePunc" $ do
+    it "removes punctuation" $ do
+      removePunc "hey'" `shouldBe` "hey"
 
+  describe "assignBack" $ do
+    it "assigns back" $ do
+      assignBack [LineS "a"] [] [("a", STRING)] `shouldBe` []
+      assignBack [LineS "b"] [] [("a", STRING)] `shouldBe` []
+      assignBack [LineB Pascal.Data.True_C] [] [("a", STRING)] `shouldBe` []
 
+  describe "varName" $ do 
+    it "variable name" $ do 
+      varName (LineId "s") `shouldBe` "s"
+      varName (LineId "asdf") `shouldBe` "asdf"
 
---Line -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> String
+  describe "Line" $ do
+    it "lines" $ do
+      line (LineS "soooo") (STRING) [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("", Id "soooo")
+      line (LineB Pascal.Data.True_C) (STRING) [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` ("", Boolean True)
+      --line (LineR Pascal.Val.Integer 3) (REAL) [] (Map.fromList[("fname" , ([([], REAL)], [("",REAL)], REAL, [], [] ))]) `shouldBe` ("", Boolean True)
+
+  describe "listR" $ do 
+    it "list of reals" $ do
+      listR ("s") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+      listR ("t") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+      listR ("1") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+
+  describe "listB" $ do 
+    it "list of booleans" $ do
+      listB ("s") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+      listB ("t") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+      listB ("1") [] (Map.fromList[("fname" , ([([], STRING)], [("",STRING)], STRING, [], [] ))]) `shouldBe` []
+
+   
+
 
     
 
 
 
 
+
+
+--String -> [Map.Map String Val] -> Map.Map String ([([String], VType)], [(String, VType)],VType,[Definition],[Statement]) -> [Map.Map String Val]
 
 
 
