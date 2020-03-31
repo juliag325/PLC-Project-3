@@ -23,10 +23,14 @@ end.
 (*
 Expected Output: 
 n = 
-2             // 2 is the user input 
 help
+5.0
+4.0
+3.0
+2.0
 1.0
 0.0
-2.0
-2.0! = 2.0
+720.0
+6.0! = 720.0
+
 *)

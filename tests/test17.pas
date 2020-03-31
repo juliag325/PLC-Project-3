@@ -3,7 +3,13 @@ program test17;
 
 var
    x, y: boolean;
+<<<<<<< HEAD
    z: real = 10;
+=======
+var
+   z: real = 10;
+var
+>>>>>>> 20e93600ed3eb3d44ad0d5856047d2deb093e3d6
    d: real = 6;
 
 
@@ -38,7 +44,7 @@ end.
 (*
 Expected Output: 
 8.0
-false
+False
 10.0
 10.0
 12.0
@@ -46,5 +52,7 @@ false
 14.0
 10.0
 10.0
+whyyyyy
 Testing while-do statements
+
 *)

@@ -2,7 +2,9 @@ program test11;
 
 var 
 x: real = 6; 
+var
 y, k: real;
+var
 test: boolean = true; 
 
 begin
@@ -22,8 +24,9 @@ end.
 
 (*
 Expected Output:
-This is x 
+This is x
 6.0
 This is y
 5.0
+
 *)

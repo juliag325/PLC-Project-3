@@ -1,48 +1,50 @@
 program test19;
 var
    a, b, ret, ter : real;
-function maxi(): real; 
+
+function maxi(a: real;): real; 
 var
-   (* local variable declaration *)
+
    result: real = 7;
 
 begin
-    result := 2;
+    a := 2;
     result := 5;
     maxi := result;
 end;
 
-(*function definition *)
-function max(): real; 
+
+function max(b:real;): real; 
 var
-   (* local variable declaration *)
+
    result: real = 7;
 
 begin
-    result := 2;
+    b := 2;
     result := 3;
     max := result;
-    max := maxi();
+    max := maxi(6);
 end;
 
-function min(): real; 
+function min(g:real;): real; 
 var
-   (* local variable declaration *)
+
    res: real;
 
 begin
-    res := max();
-    min := res;
+    res := max(89);
+    g:=res;
+    min := g;
 end;
 
 
 begin
    a := 100;
    b := 200;
-   (* calling a function to get max value *)
-   ret := max();
+
+   ret := max(67);
    writeln( 'Max value is : ', ret );
-   ter := min();
+   ter := min(3);
    writeln('Min value is : ', ter);
 
 end.
@@ -51,4 +53,5 @@ end.
 Expected Output: 
 Max value is : 5.0
 Min value is : 5.0
+
 *)

@@ -19,5 +19,17 @@ end.
 
 (*
 Expected Output 
+n = 
+help
+help
+help
+help
+help
+1.0
+2.0
+6.0
+24.0
+120.0
+5.0! = 120.0
 
 *)

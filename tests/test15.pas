@@ -1,8 +1,10 @@
 program test15; 
 
 var 
-correct: boolean = true; 
+correct: boolean = true;
+var 
 i, j: real; 
+var
 isEmpty: boolean = true; 
 
 begin 
@@ -35,7 +37,8 @@ end.
 
 (*
 Expected Output: 
-First begin block 
-Testing nested blocks 
-IsEmpty is true 
+First begin block
+Testing nested blocks
+IsEmpty is true
+
 *)
