@@ -37,4 +37,14 @@ end.
 
 (*
 Expected Output: 
+8.0
+false
+10.0
+10.0
+12.0
+10.0
+14.0
+10.0
+10.0
+Testing while-do statements
 *)

@@ -19,3 +19,14 @@ begin
   writeln(f);
   writeln(n, '! = ',f);
 end.
+
+(*
+Expected Output: 
+n = 
+2             // 2 is the user input 
+help
+1.0
+0.0
+2.0
+2.0! = 2.0
+*)

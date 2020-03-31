@@ -27,3 +27,13 @@ begin
    findMin(a, b, c, min); 
    writeln('Minimum: ', min);
 end.
+
+(*
+Expected Output: 
+ Enter three numbers: 
+4
+9
+2
+min
+ Minimum: 2.0
+*)

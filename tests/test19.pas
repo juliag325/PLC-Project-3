@@ -46,3 +46,9 @@ begin
    writeln('Min value is : ', ter);
 
 end.
+
+(*
+Expected Output: 
+Max value is : 5.0
+Min value is : 5.0
+*)

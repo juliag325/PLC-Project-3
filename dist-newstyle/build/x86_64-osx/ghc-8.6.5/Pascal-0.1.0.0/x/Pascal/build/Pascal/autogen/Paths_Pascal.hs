@@ -29,12 +29,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/Users/sindywu/.cabal/bin"
-libdir     = "/Users/sindywu/.cabal/lib/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0-inplace-Pascal"
-dynlibdir  = "/Users/sindywu/.cabal/lib/x86_64-osx-ghc-8.6.5"
-datadir    = "/Users/sindywu/.cabal/share/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0"
-libexecdir = "/Users/sindywu/.cabal/libexec/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0"
-sysconfdir = "/Users/sindywu/.cabal/etc"
+bindir     = "/Users/juliaaiello/.cabal/bin"
+libdir     = "/Users/juliaaiello/.cabal/lib/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0-inplace-Pascal"
+dynlibdir  = "/Users/juliaaiello/.cabal/lib/x86_64-osx-ghc-8.6.5"
+datadir    = "/Users/juliaaiello/.cabal/share/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0"
+libexecdir = "/Users/juliaaiello/.cabal/libexec/x86_64-osx-ghc-8.6.5/Pascal-0.1.0.0"
+sysconfdir = "/Users/juliaaiello/.cabal/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "Pascal_bindir") (\_ -> return bindir)
