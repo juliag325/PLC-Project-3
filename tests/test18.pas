@@ -1,9 +1,9 @@
 program test18; 
 
-// var
-//    x, y: boolean;
-//    z: real = 6;
-//    i: real;
+var
+x, y: boolean;
+z: real = 6;
+i: real;
 
 begin
    x := true;

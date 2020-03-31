@@ -1,16 +1,15 @@
 program test13; 
 
-//var 
-//i: real = 4; 
-//j: real = 8;
-//operation: real;  
-//k: real;  
-//works: boolean = false;
-//something: boolean = false;  
-//special: real; 
+var 
+i: real = 4; 
+j: real = 8;
+operation: real;  
+k: real = 2.0 
+works: boolean = false;
+something: boolean = false;  
+special: real; 
 
 begin 
-//readln(k); 
 writeln('This is k: '); 
 writeln(k);
 

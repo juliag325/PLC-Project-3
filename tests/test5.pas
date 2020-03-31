@@ -1,8 +1,8 @@
 program test5;
 
-//var 
-//x, sum, diff, mult, divi: real; 
-//y: real = 0.5;
+var 
+x, sum, diff, mult, divi: real; 
+y: real = 0.5;
 
 begin
     x := 2;

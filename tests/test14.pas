@@ -1,14 +1,14 @@
 program test14; 
 
-//var 
-//days: real; 
-//endGame: boolean = true; 
-//playing: boolean = true;
-// score: real; 
-// specialScore: real; 
-// playerOne: real = 0; 
-// playerTwo: real = 0; 
-// input: real; 
+var 
+days: real; 
+endGame: boolean = true; 
+playing: boolean = true;
+score: real; 
+specialScore: real; 
+playerOne: real = 0; 
+playerTwo: real = 0; 
+input: real = 2
 
 begin
 if (endGame) then 
@@ -29,7 +29,6 @@ writeln(score);
 writeln('This is the special score: '); 
 writeln(specialScore);
 
-//readln(input); 
 writeln(input); 
 
 end. 
