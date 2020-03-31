@@ -16,3 +16,8 @@ begin
   f:=factorial(n);
   writeln(n, '! = ',f);
 end.
+
+(*
+Expected Output 
+
+*)
