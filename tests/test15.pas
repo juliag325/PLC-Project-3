@@ -1,9 +1,9 @@
 program test15; 
 
-// var 
-// correct: boolean = true; 
-// i, j: real; 
-// isEmpty: boolean = true; 
+var 
+correct: boolean = true; 
+i, j: real; 
+isEmpty: boolean = true; 
 
 begin 
 begin

@@ -1,7 +1,7 @@
 program test8;
 
-//var 
-//x, y: boolean; 
+var 
+x, y: boolean; 
 
 begin
     x := true;
