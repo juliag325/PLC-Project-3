@@ -13,7 +13,4 @@ import qualified Data.Map.Strict as Map
 
 main :: IO ()
 main = hspec $ do
-  describe "mapLookUp" $ do
-    it "preserves output for numbers" $ do
-        mapLookUp "s" [Map.fromList[("s", Id "d")],Map.fromList[("a", Integer 7)]] `shouldBe` (Id "d")
 

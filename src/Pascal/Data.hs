@@ -76,7 +76,9 @@ data Statement =
     | Block [Statement]
     | ProcCall String [Line]
 
-data VType =  REAL | BOOL | STRING; 
+data VType =  REAL 
+              | BOOL
+              | STRING ; 
 
 --data Procedure = 
     -- Block Statement
